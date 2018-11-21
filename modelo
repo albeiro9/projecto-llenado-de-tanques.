@@ -1,0 +1,26 @@
+package Tanques1
+  package Records1
+    partial record ValoresParciales1
+      parameter Real A;
+      parameter Real h;
+      parameter Real a;
+      parameter Real b;
+    end ValoresParciales1;
+
+    record Valores1
+      extends ValoresParciales1(h = 3, A = 4, a = 0.5, b = 2);
+    end Valores1;   
+
+  end Records1;
+
+  package ModeloEcuacion1
+    model Ecuacion1
+      Real t;
+      Records1.Valores1 r annotation(
+        Placement(visible = true, transformation(origin = {-22, 2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    equation
+      t=(2*sqrt(r.h)*r.A)/(4.8*r.a-r.b);
+    end Ecuacion1;
+
+  end ModeloEcuacion1;
+end Tanques1;
